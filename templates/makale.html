@@ -1,0 +1,29 @@
+{% extends "navbar.html" %}
+{% block body %}
+<div class="d-flex justify-content-between container">
+    <div>
+        <h2 >Makaleler<h2>
+    </div>
+    <form action="/search" method="post" style="margin-top:8px" >
+        <input type="text" name="keyword" class="input-sm" maxlength="64" placeholder="Search" >
+        <button type="submit" class="btn btn-danger btn-sm">Search</button>
+    </form>
+</div>
+
+<hr class="container">
+{% if articles %}
+    <div class="container">
+        <ul class="list-group">
+            {% for articles in articles %}
+            <li class="list-group-item d-flex justify-content-between" style="font-size:21px"><a href="/article/{{articles.id}}">{{articles.title}}</a><a href="/deneme/{{articles.id}}" class="btn btn-outline-primary btn-sm"><i class="fas fa-star"></i></a></li> 
+            
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <strong>Üzgünüz:(</strong> Malesef makale bulunamadı
+    </div>
+{% endif %}
+
+{% endblock body %}

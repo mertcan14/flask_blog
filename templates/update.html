@@ -1,0 +1,14 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+<h3 style="color:rgb(102, 0, 204)" class="container">Makale Güncelle</h3>
+<hr>
+{% from "dosya/formhelpers.html" import render_field %}
+<form method=post  class= "container">
+    <dl>
+        {{ render_field(form.title,class="form-control") }}
+        {{ render_field(form.icerik,class="form-control") }}
+    </dl>
+    <p><input type=submit value="Güncelle" class="btn btn-primary" style="background-color:rgb(102, 0, 204); border-radius:24px">
+    </form>
+{% endblock body %}

@@ -1,0 +1,14 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+{% from "dosya/formhelpers.html" import render_field %}
+<h3 class="container">Giriş Yap</h3>
+<hr>
+<form method=post  class= "container">
+    <dl>
+        {{ render_field(form.username,class="form-control") }}
+        {{ render_field(form.Password,class="form-control") }}
+    </dl>
+    <p><input type=submit value="Giriş">
+    </form>
+{% endblock body %}

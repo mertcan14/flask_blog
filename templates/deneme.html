@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+
+{% block body %}
+<div class="container">
+<h2>Deneme</h2>
+<hr>
+<form action="/deneme123" method="post">
+  <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Yorum yapınız." name="comment" >
+        <div class="input-group-prepend"> 
+           <button style="border-radius:5px" class="btn btn-success" type="submit"><i class="far fa-comment"></i></button>
+        </div>
+  </div>
+</form>
+
+</div>
+
+{% endblock body %}

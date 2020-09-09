@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">>
+  <a class="navbar-brand" href="/">YB BLOG</a>
+  
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/hakkımızda">Hakkımızda</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/makale">Makaleler</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/deneme">deneme çalışma</a>
+    </li>
+  </ul>
+
+
+  <ul class="navbar-nav ml-auto">
+  {% if session["logid_in"] %}
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard">{{session["username"]}}</a>
+    </li>  
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Çıkış</a>
+    </li>  
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Login</a>
+    </li> 
+  {% endif %}
+
+    <li class="nav-item">
+      <a class="nav-link" href="/giris">Kayıt Ol</a>
+    </li>
+  </ul>
+</nav>

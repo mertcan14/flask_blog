@@ -1,0 +1,51 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+    {% if article %}
+        <div>
+            <h3 style="text-align:center">{{article.title}}</h3>
+            <div style="text-align:right" class="container">
+            <a href="/deneme/{{article.id}}/article"  class="btn btn-outline-light " style="border-color:#c68c53; color:#c68c53; margin-left:20px"><i class="fas fa-star"></i></a>
+            <a href="/friends/{{article.author}}" class="btn btn-outline-light" style="border-color:#009999; color:#009999; margin-left:20px" ><i class="fas fa-user-plus"></i></a>
+            </div>
+        </div>
+        <hr class=" container">
+        <div class="container">
+            <p class="container">{{article.content|safe}}</p>
+        </div>
+        <hr class="container">
+        <p class="container" style="text-align:right"><i>{{article.author}}</i></p>
+        <hr class="container">
+        <p class="container" style="text-align:right"><i>{{article.crated_date}}</i></p>
+        <div class="container">
+            <form action="/article/{{article.id}}/comment" method="post">
+                <div class="input-group mb-3 input-group-lg">
+                <input type="text" class="form-control" name="articlecomment" placeholder="Yorum...">
+                    <div class="input-group-prepend">
+                       <button style="border-radius:5px" class="btn btn-success" type="submit"><i class="far fa-comment"></i></button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        {% if comments%}
+        <div class="container" style="margin-top:90px">
+            <h4>Yorumlar:</h4>
+            <hr class="container">
+            <ul class="list-group list-group-flush">
+                {% for comments in comments%}
+                    <li class="list-group-item d-flex justify-content-between" style="background-color:#f2f2f2"><div class="container"><strong><a href="/dashboard/{{comments.nameyorum}}">{{comments.nameyorum}}</a></strong>: {{comments.yorum}}</div><div><a href="/article/{{article.id}}/{{comments.id}}" class="btn btn-outline-primary btn-sm"><i class="fas fa-heart"></i></a></div></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+            <div class="alert alert-info container" style="margin-top:90px">
+                <strong>Yorum yapılmamış.</strong>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger">
+            <strong>Makale bulunamadı.</strong>
+        </div>
+    {% endif %} 
+{% endblock body %}

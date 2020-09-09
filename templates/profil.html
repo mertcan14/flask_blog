@@ -1,0 +1,49 @@
+{% extends 'navbar.html' %}
+
+{% block body %}
+<div class="container d-flex flex-row bd-highlight mb-3">
+<img src="{{ url_for('static', filename='profil1.jpg') }}" style="width:100px; height:85px; border-radius:5px">
+  <div style="margin-left:10px" class="d-flex justify-content-between">
+    <div>
+      <h2 >{{profilSahibi[0].username}}</h2>
+      <p style="font-style: italic; font-size:13px; margin-top:-10px">{{profilSahibi[0].name}}</p>
+    </div>
+    <div>
+      <a href="/friends/{{profilSahibi[0].username}}/profil" class="btn btn-outline-light" style="border-color:#009999; color:#009999; margin-left:20px" ><i class="fas fa-user-plus"></i></a>
+    </div>
+  </div>
+</div>
+
+<hr class="container">
+<div class="container">
+    {% if article %}
+<div class="container">
+    <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Yazar</th>
+        <th>Tarih</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in article %}
+        <tr>
+            <td>{{article.id}}</td>
+            <td><a href="article/{{article.id}}">{{article.title}}</a></td>
+            <td>{{article.author}}</td>
+            <td>{{article.crated_date}}</td>
+         </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+    <div class="alert alert-warning container">
+        <strong>Üzgünüz :(</strong> Hiç makale yazmamışsınız.
+    </div>
+{% endif %}
+{% endblock body %}

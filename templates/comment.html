@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+
+{% block body %}
+    {% if form %}
+        {% from "dosya/formhelpers.html" import render_field %}
+        <form method=post class= "container">
+            <dl>
+                {{ render_field(form.comment,class="form-control") }}
+            </dl>
+           <p><input type=submit value="Kayıt OL">
+        </form>   
+    {% else %} 
+        <div class="alert alert-danger">
+            <strong>Üzgünüz</strong>
+        </div>
+    {% endif %}
+{% endblock body %}
+    

@@ -1,0 +1,23 @@
+{% extends "navbar.html" %}
+{% block body %}
+<div class="d-flex justify-content-between container">
+    <h2 >Beğenilen Makaleler<h2>
+</div>
+
+<hr class="container">
+{% if liste %}
+    <div class="container">
+        <ul class="list-group">
+            {% for liste in liste %}
+            <li class="list-group-item d-flex justify-content-between" style="font-size:21px"><a href="/article/{{liste[0].id}}">{{liste[0].title}}</a></a><a href="/fav-delete/{{liste[0].id}}" class="btn btn-outline-danger btn-sm"><i class="fas fa-star"></i></a></li> 
+            
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+   <div class="alert alert-info container">
+    <strong>Malesef</strong> Beğenilen makale bulunamadı
+  </div>
+{% endif %}
+
+{% endblock body %}
